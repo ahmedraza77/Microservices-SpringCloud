@@ -1,6 +1,7 @@
 package com.microservice.limitservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,9 +15,13 @@ public class LimitServiceController {
 	@Autowired
 	private Configuration configuration;       // can be wired anywhere I want to read the values
 	
+	@Autowired
+	private Environment environment;  
+	
 	@GetMapping("/limits")
 	public LimitConfiguration retrieveLimitsFromConfiguration() {
-		return new LimitConfiguration(configuration.getMaximum(), configuration.getMinimum());
+		int port = Integer.parseInt(environment.getProperty("local.server.port"));
+		return new LimitConfiguration(configuration.getMaximum(), configuration.getMinimum(), port);
 	}
 	
 	@GetMapping("/fault-tolerance-example")
@@ -27,7 +32,8 @@ public class LimitServiceController {
 	
 	
 	public LimitConfiguration fallbackRetrieveConfiguration() {
-		return new LimitConfiguration(555, 5);
+		int port = Integer.parseInt(environment.getProperty("local.server.port"));
+		return new LimitConfiguration(555, 5, port);
 	}
 	
 }

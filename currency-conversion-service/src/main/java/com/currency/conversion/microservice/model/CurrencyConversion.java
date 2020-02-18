@@ -10,7 +10,7 @@ public class CurrencyConversion {
 	private BigDecimal conversionMultiple;
 	private BigDecimal quantity;
 	private BigDecimal totalCalculatedAmount;
-	private int port;
+	private int exchangePort;
 	
 	public CurrencyConversion() {
 		
@@ -25,7 +25,7 @@ public class CurrencyConversion {
 		this.conversionMultiple = conversionMultiple;
 		this.quantity = quantity;
 		this.totalCalculatedAmount = totalCalculatedAmount;
-		this.port = port;
+		this.exchangePort = port;
 	}
 
 	public Long getId() {
@@ -77,11 +77,11 @@ public class CurrencyConversion {
 	}
 
 	public int getPort() {
-		return port;
+		return exchangePort;
 	}
 
 	public void setPort(int port) {
-		this.port = port;
+		this.exchangePort = port;
 	}
 	
 
