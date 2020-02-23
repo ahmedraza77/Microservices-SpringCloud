@@ -10,6 +10,7 @@ import com.netflix.zuul.context.RequestContext;
 @Component
 public class FilterUtils {
     public static final String CORRELATION_ID = "x-correlation-id";
+    public static final String SLEUTH_TRACE_ID = "sleuth-trace-id";
     public static final String PRE_FILTER_TYPE = "pre";
     public static final String POST_FILTER_TYPE = "post";
     public static final String ROUTE_FILTER_TYPE = "route";
